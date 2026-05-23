@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Razors &amp; Scissors — Premium Barbershop, Islamabad</title>
+  <meta name="description" content="Islamabad's premier men's grooming house at I-8 Markaz. Signature haircuts, hot-towel shaves, beard sculpting and wedding grooming by master barbers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg0: #0A0A0A; --bg1: #121212; --bg2: #1A1A1A; --bg3: #222;
+      --gold: #C5A059; --gold-hi: #E0C38C; --gold-mute: #8A733F;
+      --text: #F5F5F0; --text2: #A3A3A3;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg0); color: var(--text); font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: var(--gold); color: var(--bg0); }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .overline { font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .gold { color: var(--gold); }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* LAYOUT */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media(min-width:768px){ .container { padding: 0 48px; } }
+    @media(min-width:1024px){ .container { padding: 0 96px; } }
+    .section { padding: 112px 0; }
+    .section-dark { background: #0c0c0c; }
+
+    /* DIVIDER */
+    .gold-line { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .gold-line::before { content:''; height:1px; width:40px; background:var(--gold); flex-shrink:0; }
+
+    /* BUTTONS */
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--bg0);
+      padding: 14px 28px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; font-size: 0.76rem; font-family: 'Outfit', sans-serif;
+      border: 1px solid var(--gold); transition: background .3s, border-color .3s;
+    }
+    .btn-gold:hover { background: var(--gold-hi); border-color: var(--gold-hi); }
+    .btn-gold:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--gold);
+      padding: 14px 28px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; font-size: 0.76rem; font-family: 'Outfit', sans-serif;
+      border: 1px solid var(--gold); transition: background .3s;
+    }
+    .btn-outline:hover { background: rgba(197,160,89,.1); }
+
+    /* NAV */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0; transition: all .5s;
+    }
+    #navbar.scrolled {
+      padding: 12px 0;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      background: rgba(10,10,10,.75);
+      border-bottom: 1px solid rgba(197,160,89,.12);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-links { display: none; gap: 36px; }
+    @media(min-width:1024px){ .nav-links { display: flex; } }
+    .nav-link {
+      font-size: 0.72rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--text2); transition: color .3s; position: relative; background:none; border:none; cursor:pointer; font-family:'Outfit',sans-serif;
+    }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px; background:var(--gold); transition:width .35s; }
+    .nav-link:hover { color: var(--text); }
+    .nav-link:hover::after { width: 100%; }
+    .logo-btn { text-align:center; background:none; border:none; cursor:pointer; }
+    .logo-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--text); letter-spacing:-.01em; }
+    .logo-sub { font-size:0.58rem; letter-spacing:.45em; color:#555; margin-top:2px; display:block; text-transform:uppercase; }
+    .hamburger { display:block; color:var(--text); width:32px; height:32px; cursor:pointer; position:relative; }
+    @media(min-width:1024px){ .hamburger { display:none; } }
+    .hamburger span { display:block; height:1px; background:var(--text); transition:.3s; margin:7px 0; }
+    #mobile-menu {
+      display:none; position:absolute; top:100%; left:0; right:0;
+      backdrop-filter:blur(18px); background:rgba(10,10,10,.9);
+      border-top:1px solid #222; padding: 32px 24px;
+    }
+    #mobile-menu.open { display:block; }
+    .mobile-link { display:block; font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text2); padding:14px 0; border-bottom:1px solid #1a1a1a; cursor:pointer; background:none; border-right:none; border-left:none; border-top:none; width:100%; text-align:left; font-family:'Outfit',sans-serif; }
+    .mobile-link:hover { color:var(--gold); }
+
+    /* HERO */
+    #hero { position:relative; min-height:100vh; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,10,10,.2) 0%,rgba(10,10,10,.55) 55%,rgba(10,10,10,.97) 100%); }
+    .hero-content { position:relative; z-index:2; padding-top:160px; padding-bottom:96px; }
+    .hero-grid { display:grid; grid-template-columns:1fr; gap:48px; align-items:end; min-height:80vh; }
+    @media(min-width:1024px){ .hero-grid { grid-template-columns: 7fr 5fr; } }
+    .hero-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem); line-height:.95; letter-spacing:-.02em; font-weight:500; color:var(--text); }
+    .hero-h1 em { color:var(--gold); font-style:italic; font-weight:400; }
+    .hero-desc { color:var(--text2); font-size:1rem; line-height:1.7; max-width:480px; font-weight:300; margin-top:28px; }
+    .hero-ctas { margin-top:36px; display:flex; flex-wrap:wrap; gap:14px; }
+    .hero-trust { margin-top:48px; display:flex; flex-wrap:wrap; gap:32px; align-items:center; }
+    .stars { display:flex; gap:2px; }
+    .star { color:var(--gold); font-size:13px; }
+    .hero-widget {
+      border:1px solid rgba(197,160,89,.25); background:rgba(0,0,0,.65);
+      backdrop-filter:blur(12px); padding:36px; max-width:420px; margin-left:auto;
+    }
+    .widget-row { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid #1c1c1c; padding-bottom:12px; font-size:.85rem; }
+    .widget-row:last-of-type { border-bottom:none; }
+    .widget-k { font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:#555; }
+    .widget-v { color:var(--text); text-align:right; }
+
+    /* MARQUEE */
+    .marquee-wrap { overflow:hidden; pointer-events:none; padding:20px 0 0; }
+    .marquee-track { display:flex; gap:48px; white-space:nowrap; animation:marquee 38s linear infinite; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-item { font-size:.68rem; letter-spacing:.4em; text-transform:uppercase; color:#2e2e2e; display:flex; align-items:center; gap:48px; }
+    .marquee-dot { color:rgba(197,160,89,.35); }
+
+    /* ABOUT */
+    .about-grid { display:grid; grid-template-columns:1fr; gap:64px; align-items:center; }
+    @media(min-width:1024px){ .about-grid { grid-template-columns:6fr 6fr; } }
+    .about-img-wrap { position:relative; }
+    .about-img-wrap img { width:100%; height:480px; object-fit:cover; }
+    .about-badge { position:absolute; bottom:-24px; right:-24px; border:1px solid rgba(197,160,89,.4); background:var(--bg0); padding:24px 28px; display:none; }
+    @media(min-width:768px){ .about-badge { display:block; } }
+    .about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:380px; margin-top:40px; }
+    .stat { border-left:1px solid rgba(197,160,89,.4); padding-left:16px; }
+    .stat-n { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--text); }
+    .stat-l { font-size:.62rem; letter-spacing:.25em; text-transform:uppercase; color:var(--text2); margin-top:4px; }
+    .h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,3.5rem); line-height:1.05; letter-spacing:-.02em; color:var(--text); margin-bottom:24px; }
+    .h2 em { color:var(--gold); font-style:italic; font-weight:400; }
+    .body-text { color:var(--text2); line-height:1.75; font-weight:300; max-width:520px; }
+
+    /* SERVICES */
+    .services-header { display:flex; flex-direction:column; gap:24px; margin-bottom:64px; }
+    @media(min-width:768px){ .services-header { flex-direction:row; align-items:flex-end; justify-content:space-between; } }
+    .services-grid { display:grid; grid-template-columns:1fr; gap:1px; background:#1a1a1a; }
+    @media(min-width:768px){ .services-grid { grid-template-columns:1fr 1fr; } }
+    @media(min-width:1024px){ .services-grid { grid-template-columns:1fr 1fr 1fr; } }
+    .service-card {
+      background:var(--bg1); padding:32px 28px;
+      border:1px solid #1f1f1f; transition:border-color .4s;
+      position:relative; overflow:hidden;
+    }
+    .service-card:hover { border-color:rgba(197,160,89,.5); }
+    .svc-icon { font-size:24px; margin-bottom:24px; color:var(--gold); }
+    .svc-title { font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--text); margin-bottom:10px; line-height:1.2; }
+    .svc-desc { font-size:.85rem; color:var(--text2); line-height:1.7; font-weight:300; min-height:56px; }
+    .svc-footer { display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid #1c1c1c; padding-top:18px; margin-top:24px; }
+    .svc-dur { font-size:.72rem; color:var(--text2); }
+    .svc-price { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--gold); text-align:right; }
+    .svc-price-label { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:#555; }
+    .svc-book-link { margin-top:20px; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text2); display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:none; border:none; width:100%; font-family:'Outfit',sans-serif; transition:color .3s; padding:0; }
+    .svc-book-link:hover { color:var(--gold); }
+
+    /* BARBERS */
+    .barbers-grid { display:grid; grid-template-columns:1fr; gap:32px; }
+    @media(min-width:768px){ .barbers-grid { grid-template-columns:1fr 1fr 1fr; } }
+    .barber-card { position:relative; overflow:hidden; }
+    .barber-card img { width:100%; height:480px; object-fit:cover; transition:transform .8s, filter .5s; filter:grayscale(15%) brightness(.85); }
+    .barber-card:hover img { transform:scale(1.06); filter:grayscale(0%) brightness(1); }
+    .barber-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.96) 100%); }
+    .barber-num { position:absolute; top:20px; left:20px; font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); background:rgba(0,0,0,.65); padding:8px 12px; border:1px solid rgba(197,160,89,.3); }
+    .barber-info { position:absolute; bottom:0; left:0; right:0; padding:24px; }
+    .barber-title { font-size:.65rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+    .barber-name { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--text); margin-bottom:10px; }
+    .barber-bio { font-size:.82rem; color:var(--text2); font-weight:300; line-height:1.6; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:14px; }
+    .barber-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .barber-tag { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(197,160,89,.3); padding:4px 10px; }
+    .barber-book-btn { font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text); border-bottom:1px solid rgba(197,160,89,.4); padding-bottom:4px; cursor:pointer; background:none; border-right:none; border-left:none; border-top:none; font-family:'Outfit',sans-serif; transition:color .3s; }
+    .barber-book-btn:hover { color:var(--gold); }
+
+    /* GALLERY */
+    .gallery-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,200px); gap:12px; }
+    @media(min-width:768px){ .gallery-grid { grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(3,220px); gap:16px; } }
+    .g-tile { overflow:hidden; position:relative; }
+    .g-tile img { width:100%; height:100%; object-fit:cover; transition:transform .9s; filter:brightness(.85); }
+    .g-tile:hover img { transform:scale(1.08); filter:brightness(1); }
+    .g1 { grid-column:1/3; grid-row:1/3; }
+    .g4 { grid-column:4/5; grid-row:1/3; }
+    .g5 { grid-column:1/3; grid-row:3/4; }
+    @media(max-width:767px){
+      .g1 { grid-column:1/3; grid-row:1/3; }
+      .g4 { grid-column:2/3; grid-row:3/4; }
+      .g5 { grid-column:1/2; grid-row:4/5; }
+    }
+
+    /* REVIEWS */
+    .reviews-top { display:grid; grid-template-columns:1fr; gap:32px; margin-bottom:56px; }
+    @media(min-width:1024px){ .reviews-top { grid-template-columns:7fr 5fr; } }
+    .grating { border-left:4px solid rgba(197,160,89,.4); padding-left:24px; }
+    .grating-n { font-family:'Cormorant Garamond',serif; font-size:3rem; color:var(--text); }
+    .reviews-grid { display:grid; grid-template-columns:1fr; gap:24px; }
+    @media(min-width:768px){ .reviews-grid { grid-template-columns:1fr 1fr 1fr; } }
+    .review-card { background:linear-gradient(180deg,#121212 0%,#0e0e0e 100%); border:1px solid #1f1f1f; padding:32px; position:relative; }
+    .review-quote { position:absolute; top:-14px; left:20px; font-family:'Cormorant Garamond',serif; font-size:5rem; color:rgba(197,160,89,.2); line-height:1; }
+    .review-stars { display:flex; gap:2px; margin-bottom:20px; }
+    .review-text { color:#d6d6d0; font-size:.9rem; line-height:1.75; font-weight:300; margin-bottom:24px; }
+    .review-author { display:flex; align-items:center; gap:14px; border-top:1px solid #1c1c1c; padding-top:18px; }
+    .review-avatar { width:44px; height:44px; border:1px solid rgba(197,160,89,.4); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--gold); flex-shrink:0; }
+    .review-name { font-size:.88rem; font-weight:500; color:var(--text); }
+    .review-meta { font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:#555; margin-top:3px; }
+
+    /* BOOKING */
+    #booking { border-top:1px solid #181818; }
+    .booking-grid { display:grid; grid-template-columns:1fr; gap:56px; }
+    @media(min-width:1024px){ .booking-grid { grid-template-columns:5fr 7fr; } }
+    .bk-info-row { display:grid; grid-template-columns:1fr 2fr; gap:20px; border-bottom:1px solid #1c1c1c; padding-bottom:16px; }
+    .bk-info-k { font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:#555; }
+    .bk-info-v { font-size:.85rem; color:#d6d6d0; font-weight:300; }
+    .form-wrap { border:1px solid #1c1c1c; background:#0e0e0e; padding:40px; }
+    @media(min-width:768px){ .form-wrap { padding:48px; } }
+    .form-grid { display:grid; grid-template-columns:1fr; gap:32px; }
+    @media(min-width:768px){ .form-grid { grid-template-columns:1fr 1fr; } }
+    .form-full { grid-column:1/-1; }
+    .label-tiny { font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text2); display:block; margin-bottom:6px; }
+    .input-line {
+      background:transparent; border:none; border-bottom:1px solid #2a2a2a;
+      color:var(--text); padding:12px 0; width:100%;
+      font-family:'Outfit',sans-serif; font-size:.9rem; transition:border-color .3s;
+    }
+    .input-line:hover { border-bottom-color:#4a4a4a; }
+    .input-line:focus { border-bottom-color:var(--gold); outline:none; }
+    .input-line::placeholder { color:#444; }
+    select.input-line {
+      appearance:none; cursor:pointer;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23C5A059' stroke-width='1.5'/></svg>");
+      background-repeat:no-repeat; background-position:right 4px center; padding-right:28px;
+    }
+    select.input-line option { background:#121212; color:var(--text); }
+    textarea.input-line { resize:none; }
+    .form-footer { margin-top:36px; display:flex; flex-direction:column; gap:16px; }
+    @media(min-width:640px){ .form-footer { flex-direction:row; align-items:center; justify-content:space-between; } }
+    .form-note { font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; }
+    .success-box { border:1px solid rgba(197,160,89,.4); background:#0e0e0e; padding:48px; }
+    .success-icon { font-size:2.5rem; color:var(--gold); margin-bottom:20px; }
+    .success-title { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--text); margin-bottom:14px; }
+    .success-text { color:var(--text2); font-weight:300; margin-bottom:28px; line-height:1.7; }
+    #toast {
+      position:fixed; bottom:24px; right:24px; z-index:9999;
+      background:#121212; border:1px solid rgba(197,160,89,.4); color:var(--text);
+      padding:14px 20px; font-size:.85rem; border-radius:2px;
+      transform:translateY(120%); opacity:0; transition:.4s ease;
+      max-width:320px; font-family:'Outfit',sans-serif;
+    }
+    #toast.show { transform:translateY(0); opacity:1; }
+    #toast.error { border-color:rgba(220,80,80,.5); }
+
+    /* CONTACT */
+    .contact-grid { display:grid; grid-template-columns:1fr; gap:48px; }
+    @media(min-width:1024px){ .contact-grid { grid-template-columns:5fr 7fr; } }
+    .contact-item { display:flex; align-items:flex-start; gap:18px; }
+    .contact-icon { width:40px; height:40px; border:1px solid rgba(197,160,89,.4); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem; color:var(--gold); transition:border-color .3s; }
+    .contact-item:hover .contact-icon { border-color:var(--gold); }
+    .contact-k { font-size:.62rem; letter-spacing:.25em; text-transform:uppercase; color:#555; margin-bottom:4px; }
+    .contact-v { font-size:.9rem; color:var(--text); font-weight:300; }
+    .map-wrap { height:440px; border:1px solid rgba(197,160,89,.2); overflow:hidden; }
+    .map-wrap iframe { width:100%; height:100%; filter:invert(.92) hue-rotate(180deg) brightness(.85) contrast(.95); }
+
+    /* FOOTER */
+    footer { background:#070707; border-top:1px solid #181818; padding-top:80px; padding-bottom:40px; }
+    .footer-grid { display:grid; grid-template-columns:1fr; gap:48px; margin-bottom:64px; }
+    @media(min-width:768px){ .footer-grid { grid-template-columns:5fr 3fr 4fr; } }
+    .footer-logo-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--text); }
+    .footer-tagline { font-size:.6rem; letter-spacing:.4em; color:#555; text-transform:uppercase; margin-bottom:20px; }
+    .footer-desc { color:var(--text2); font-weight:300; max-width:320px; font-size:.9rem; line-height:1.7; margin-bottom:32px; }
+    .footer-h { font-size:.68rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; font-weight:500; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .footer-links a { font-size:.88rem; color:var(--text2); transition:color .3s; }
+    .footer-links a:hover { color:var(--gold); }
+    .footer-contact-list { display:flex; flex-direction:column; gap:16px; margin-bottom:28px; }
+    .footer-contact-item { display:flex; align-items:flex-start; gap:12px; font-size:.85rem; color:var(--text2); }
+    .fc-icon { color:var(--gold); flex-shrink:0; margin-top:2px; font-size:.75rem; }
+    .social-row { display:flex; gap:10px; }
+    .social-btn { width:40px; height:40px; border:1px solid #222; display:flex; align-items:center; justify-content:center; color:var(--text2); transition:border-color .3s, color .3s; font-size:.85rem; }
+    .social-btn:hover { border-color:var(--gold); color:var(--gold); }
+    .footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(197,160,89,.5),transparent); margin-bottom:28px; }
+    .footer-bottom { display:flex; flex-direction:column; gap:12px; align-items:flex-start; font-size:.72rem; color:#444; }
+    @media(min-width:640px){ .footer-bottom { flex-direction:row; justify-content:space-between; align-items:center; } }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity:0; }
+    .revealed { animation:fadeUp .9s ease-out forwards; }
+    .revealed.d1 { animation-delay:.15s; }
+    .revealed.d2 { animation-delay:.3s; }
+    .revealed.d3 { animation-delay:.45s; }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--bg0); }
+    ::-webkit-scrollbar-thumb { background:rgba(197,160,89,.3); border-radius:3px; }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter:invert(.7) sepia(.6) saturate(2) hue-rotate(5deg); cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<header id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <nav class="nav-links" id="nav-left">
+        <button class="nav-link" onclick="scrollTo('services')">Services</button>
+        <button class="nav-link" onclick="scrollTo('barbers')">The Team</button>
+        <button class="nav-link" onclick="scrollTo('gallery')">Gallery</button>
+      </nav>
+      <button class="logo-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-testid="logo-button">
+        <span class="overline" style="display:block;text-align:center;margin-bottom:4px;">Est. Islamabad</span>
+        <span class="logo-title">Razors <span class="gold">&amp;</span> Scissors</span>
+        <span class="logo-sub">— I-8 MARKAZ —</span>
+      </button>
+      <div class="nav-links" id="nav-right" style="display:none;"><!-- shown via CSS --></div>
+      <div class="nav-links" id="nav-right-desktop">
+        <button class="nav-link" onclick="scrollTo('reviews')">Reviews</button>
+        <button class="nav-link" onclick="scrollTo('contact')">Contact</button>
+        <button class="btn-gold" style="padding:10px 20px;font-size:.7rem;" onclick="scrollTo('booking')" data-testid="book-now-nav-button">Book Now</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" data-testid="mobile-menu-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" data-testid="mobile-menu">
+    <button class="mobile-link" onclick="scrollTo('services');closeMenu()">Services</button>
+    <button class="mobile-link" onclick="scrollTo('barbers');closeMenu()">The Team</button>
+    <button class="mobile-link" onclick="scrollTo('gallery');closeMenu()">Gallery</button>
+    <button class="mobile-link" onclick="scrollTo('reviews');closeMenu()">Reviews</button>
+    <button class="mobile-link" onclick="scrollTo('contact');closeMenu()">Contact</button>
+    <a href="tel:+92518774260" class="mobile-link" style="color:var(--gold);display:flex;align-items:center;gap:8px;">📞 +92 51 8774260</a>
+    <button class="btn-gold" style="width:100%;justify-content:center;margin-top:16px;" onclick="scrollTo('booking');closeMenu()" data-testid="mobile-book-now">Book Now</button>
+  </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section id="hero" data-testid="hero-section">
+  <div class="hero-bg">
+    <img src="https://static.prod-images.emergentagent.com/jobs/d3e4337d-1a06-4353-be65-4ca9b00ea83a/images/2ce01884f17562f9ba0dff0b49227dff900f965919fb4f4977957a3e58466fa8.png" alt="Premium luxury barbershop interior" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content container">
+    <div class="hero-grid">
+      <div class="reveal" id="hero-text">
+        <div class="gold-line"><span class="overline">A Gentleman's Establishment</span></div>
+        <h1 class="hero-h1">
+          The art of <em>grooming</em>,<br>
+          refined in Islamabad.
+        </h1>
+        <p class="hero-desc">For over a decade, Razors &amp; Scissors has set the standard for men's grooming at I-8 Markaz. Precision haircuts, hot-towel shaves and wedding-day rituals — delivered by master barbers.</p>
+        <div class="hero-ctas">
+          <button class="btn-gold" onclick="scrollTo('booking')" data-testid="hero-book-button">Book Your Chair ↗</button>
+          <button class="btn-outline" onclick="scrollTo('services')" data-testid="hero-services-link">Our Services</button>
+        </div>
+        <div class="hero-trust" data-testid="hero-rating">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="stars">★★★★★</div>
+            <span style="font-size:.85rem;color:var(--text2);"><span style="color:var(--text);font-weight:500;">4.4</span> · 185 Google reviews</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text2);">
+            <span style="color:var(--gold);">📍</span> Pakland Business Center, I-8 Markaz
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2" id="hero-widget">
+        <div class="hero-widget">
+          <p class="overline" style="margin-bottom:10px;">Today at the shop</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text);margin-bottom:24px;line-height:1.4;">Open until 8 PM. Walk-ins welcome, appointments preferred.</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div class="widget-row"><span class="widget-k">Hours</span><span class="widget-v">11:00 AM — 8:00 PM</span></div>
+            <div class="widget-row"><span class="widget-k">Phone</span><span class="widget-v">+92 51 8774260</span></div>
+            <div class="widget-row"><span class="widget-k">Address</span><span class="widget-v">I-8 Markaz, Islamabad</span></div>
+            <div class="widget-row"><span class="widget-k">Founded</span><span class="widget-v">A decade of fine barbering</span></div>
+          </div>
+          <button class="btn-gold" style="width:100%;justify-content:center;" onclick="scrollTo('booking')" data-testid="hero-widget-book">Reserve a Time</button>
+        </div>
+      </div>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Signature Haircut</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Hot Towel Shave</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Beard Sculpt</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Wedding Grooming</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Hair Colour</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Gentleman's Facial</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Head Massage</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Signature Haircut</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Hot Towel Shave</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Beard Sculpt</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Wedding Grooming</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Hair Colour</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Gentleman's Facial</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span>Head Massage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about" class="section" data-testid="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal" id="about-img">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1590360316066-357b23e0dd15?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBiYXJiZXJzaG9wJTIwaW50ZXJpb3IlMjBkYXJrfGVufDB8fHx8MTc3OTUzMjY0OXww&ixlib=rb-4.1.0&q=85&w=1100" alt="Premium leather barber chair" />
+          <div class="about-badge">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);line-height:1;">10+</div>
+            <div style="font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text2);margin-top:6px;">Years of craft</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d1" id="about-copy">
+        <div class="gold-line"><span class="overline">Our House</span></div>
+        <h2 class="h2">Where every detail is <em>measured</em>, every cut <em>deliberate</em>.</h2>
+        <p class="body-text" style="margin-bottom:20px;">Tucked inside the Pakland Business Center at I-8 Markaz, Razors &amp; Scissors is more than a barbershop — it's a quiet retreat for men who appreciate craftsmanship. From the warm leather of our chairs to the soft glow of our backlit mirrors, every detail is designed to slow you down.</p>
+        <p class="body-text" style="margin-bottom:40px;">Our master barbers — Shani, Mudassir and the team — bring decades of combined experience in classic and modern grooming. From a clean fade to a full pre-wedding ritual, you'll leave feeling sharper than when you arrived.</p>
+        <div class="about-stats">
+          <div class="stat"><div class="stat-n">4.4★</div><div class="stat-l">Google Rated</div></div>
+          <div class="stat"><div class="stat-n">185+</div><div class="stat-l">Reviews</div></div>
+          <div class="stat"><div class="stat-n">3</div><div class="stat-l">Master Barbers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section id="services" class="section" style="background:var(--bg0);" data-testid="services-section">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="gold-line"><span class="overline">The Menu</span></div>
+        <h2 class="h2" style="margin-bottom:0;">Services &amp; <em>Rituals</em></h2>
+      </div>
+      <p style="color:var(--text2);max-width:320px;line-height:1.7;font-weight:300;font-size:.9rem;">Every service ends with a hot towel, scalp massage and a complimentary espresso. Prices in PKR.</p>
+    </div>
+    <div class="services-grid" id="services-grid">
+      <!-- Populated by JS -->
+      <div style="padding:48px;text-align:center;color:var(--text2);grid-column:1/-1;" id="svc-loading">Loading services…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BARBERS ====== -->
+<section id="barbers" class="section section-dark" data-testid="barbers-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:64px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;">
+        <div style="height:1px;width:40px;background:var(--gold);"></div>
+        <span class="overline">Behind the Chair</span>
+        <div style="height:1px;width:40px;background:var(--gold);"></div>
+      </div>
+      <h2 class="h2" style="margin-bottom:16px;">Meet the <em>masters</em></h2>
+      <p style="color:var(--text2);max-width:480px;margin:0 auto;font-weight:300;font-size:.9rem;">Each barber is hand-picked, classically trained and obsessive about detail.</p>
+    </div>
+    <div class="barbers-grid" id="barbers-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section id="gallery" class="section" data-testid="gallery-section">
+  <div class="container">
+    <div class="services-header" style="margin-bottom:56px;">
+      <div>
+        <div class="gold-line"><span class="overline">Inside the Shop</span></div>
+        <h2 class="h2" style="margin-bottom:0;">The <em>atmosphere</em>.</h2>
+      </div>
+      <p style="color:var(--text2);max-width:320px;font-weight:300;font-size:.9rem;">Polished brass, warm leather, low light. A space built for ritual.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-tile g1" data-testid="gallery-tile-0"><img src="https://images.pexels.com/photos/16372646/pexels-photo-16372646.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200" alt="Vintage barber chair" /></div>
+      <div class="g-tile" data-testid="gallery-tile-1"><img src="https://images.unsplash.com/photo-1524230616393-d6229fcd2eff?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwzfHxzdHJhaWdodCUyMHJhem9yJTIwZ3Jvb21pbmclMjB0b29sc3xlbnwwfHx8fDE3Nzk1MzI2NDl8MA&ixlib=rb-4.1.0&q=85&w=900" alt="Straight razor" /></div>
+      <div class="g-tile" data-testid="gallery-tile-2"><img src="https://images.pexels.com/photos/9153970/pexels-photo-9153970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=900" alt="Beard trim" /></div>
+      <div class="g-tile g4" data-testid="gallery-tile-3"><img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxiYXJiZXIlMjB0cmltbWluZyUyMGJlYXJkfGVufDB8fHx8MTc3OTUzMjY0OXww&ixlib=rb-4.1.0&q=85&w=900" alt="Premium haircut" /></div>
+      <div class="g-tile g5" data-testid="gallery-tile-4"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1100&q=85&auto=format&fit=crop" alt="Barbershop tools" /></div>
+      <div class="g-tile" data-testid="gallery-tile-5"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=85&auto=format&fit=crop" alt="Master barber" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== REVIEWS ====== -->
+<section id="reviews" class="section section-dark" data-testid="reviews-section">
+  <div class="container">
+    <div class="reviews-top">
+      <div>
+        <div class="gold-line"><span class="overline">Word of Mouth</span></div>
+        <h2 class="h2" style="margin-bottom:0;">What the gentlemen <em>say</em>.</h2>
+      </div>
+      <div style="display:flex;align-items:flex-end;" data-testid="google-stats">
+        <div class="grating">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px;">
+            <div class="grating-n">4.4</div>
+            <div>
+              <div class="stars" style="font-size:14px;letter-spacing:2px;">★★★★★</div>
+              <div style="font-size:.72rem;color:var(--text2);margin-top:4px;">185 Google reviews</div>
+            </div>
+          </div>
+          <p style="font-size:.82rem;color:var(--text2);font-weight:300;">Real reviews from real clients at our I-8 Markaz branch.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card" data-testid="review-rev-1">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Got ready for my wedding from this branch and the service was impeccable. The staff was really nice, accommodating and professional. Particularly impressed by my stylist Mudassir Bhai — thorough gentleman and very good artist. Highly recommended.</p>
+        <div class="review-author">
+          <div class="review-avatar">AM</div>
+          <div>
+            <div class="review-name">Akash S. Mohammed</div>
+            <div class="review-meta">Wedding Client · 5 months ago</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card" data-testid="review-rev-2">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Shani is one of the best barbers I've been to. He's skilled, patient and really pays attention to the details. Every haircut feels fresh and clean and he makes sure you leave fully satisfied.</p>
+        <div class="review-author">
+          <div class="review-avatar">QR</div>
+          <div>
+            <div class="review-name">Qazi Rehan</div>
+            <div class="review-meta">Regular · 6 months ago</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card" data-testid="review-rev-3">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I came back from England after two years and was looking for a reliable barber. Luckily, I found this place where I met Shani — extremely professional and a talented gentleman.</p>
+        <div class="review-author">
+          <div class="review-avatar">AA</div>
+          <div>
+            <div class="review-name">Ali Azlan</div>
+            <div class="review-meta">Local Guide · a year ago</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BOOKING ====== -->
+<section id="booking" class="section" data-testid="booking-section">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <div class="gold-line"><span class="overline">Reserve Your Chair</span></div>
+        <h2 class="h2">Book an <em>appointment</em>.</h2>
+        <p class="body-text" style="margin-bottom:40px;">Choose your service, pick a barber and the time that suits you. We'll confirm by call or SMS within minutes during shop hours.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div class="bk-info-row"><span class="bk-info-k">Walk-ins</span><span class="bk-info-v">Welcome, subject to chair availability.</span></div>
+          <div class="bk-info-row"><span class="bk-info-k">Cancellation</span><span class="bk-info-v">Free up to 2 hours before your slot.</span></div>
+          <div class="bk-info-row"><span class="bk-info-k">Group bookings</span><span class="bk-info-v">Wedding parties — call us directly.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="form-wrap" id="form-wrap">
+          <form id="booking-form" data-testid="booking-form" onsubmit="submitBooking(event)">
+            <div class="form-grid">
+              <div>
+                <label class="label-tiny" for="f-name">Full Name *</label>
+                <input id="f-name" type="text" class="input-line" placeholder="John Doe" required data-testid="form-name" />
+              </div>
+              <div>
+                <label class="label-tiny" for="f-phone">Phone *</label>
+                <input id="f-phone" type="tel" class="input-line" placeholder="+92 3XX XXXXXXX" required data-testid="form-phone" />
+              </div>
+              <div>
+                <label class="label-tiny" for="f-email">Email</label>
+                <input id="f-email" type="email" class="input-line" placeholder="you@email.com" data-testid="form-email" />
+              </div>
+              <div>
+                <label class="label-tiny" for="f-service">Service *</label>
+                <select id="f-service" class="input-line" required data-testid="form-service">
+                  <option value="">Select a service</option>
+                  <option value="signature-haircut">Signature Haircut — PKR 1,800</option>
+                  <option value="beard-sculpt">Beard Sculpt &amp; Trim — PKR 1,200</option>
+                  <option value="classic-shave">Classic Straight Razor Shave — PKR 1,500</option>
+                  <option value="haircut-beard">Haircut &amp; Beard Combo — PKR 2,700</option>
+                  <option value="wedding-grooming">Groom Package — PKR 8,500</option>
+                  <option value="hair-color">Hair Colour &amp; Camouflage — PKR 3,500</option>
+                  <option value="luxury-facial">Gentleman's Facial — PKR 2,500</option>
+                  <option value="head-massage">Hot Oil Head Massage — PKR 900</option>
+                </select>
+              </div>
+              <div>
+                <label class="label-tiny" for="f-barber">Preferred Barber</label>
+                <select id="f-barber" class="input-line" data-testid="form-barber">
+                  <option value="any">Any available</option>
+                  <option value="shani">Shani — Master Barber</option>
+                  <option value="mudassir">Mudassir — Senior Stylist</option>
+                  <option value="haris">Haris — Barber</option>
+                </select>
+              </div>
+              <div>
+                <label class="label-tiny" for="f-date">Date *</label>
+                <input id="f-date" type="date" class="input-line" required data-testid="form-date" />
+              </div>
+              <div>
+                <label class="label-tiny" for="f-time">Time *</label>
+                <select id="f-time" class="input-line" required data-testid="form-time">
+                  <option value="">Select a time</option>
+                  <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+                  <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+                  <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+                  <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+                  <option>19:00</option><option>19:30</option>
+                </select>
+              </div>
+              <div class="form-full">
+                <label class="label-tiny" for="f-notes">Notes</label>
+                <textarea id="f-notes" class="input-line" rows="2" placeholder="Anything we should know? (e.g. fade preference, allergies)" data-testid="form-notes"></textarea>
+              </div>
+            </div>
+            <div class="form-footer">
+              <span class="form-note">* Required · We'll confirm by call/SMS</span>
+              <button type="submit" class="btn-gold" id="submit-btn" data-testid="form-submit">Reserve Appointment →</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact" class="section section-dark" data-testid="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="gold-line"><span class="overline">Find Us</span></div>
+        <h2 class="h2">Come <em>visit</em>.</h2>
+        <p class="body-text" style="margin-bottom:40px;">Drop by the I-8 Markaz branch. Plenty of parking under the Pakland Business Center.</p>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div class="contact-item" data-testid="contact-address">
+            <div class="contact-icon">📍</div>
+            <div><div class="contact-k">Address</div><div class="contact-v">Pakland Business Center, I-8 Markaz, Islamabad, 44719</div></div>
+          </div>
+          <a href="tel:+92518774260" class="contact-item" data-testid="contact-phone">
+            <div class="contact-icon">📞</div>
+            <div><div class="contact-k">Phone</div><div class="contact-v">+92 51 8774260</div></div>
+          </a>
+          <a href="https://razorsnscissorspk.com" target="_blank" rel="noreferrer" class="contact-item" data-testid="contact-website">
+            <div class="contact-icon">🌐</div>
+            <div><div class="contact-k">Website</div><div class="contact-v">razorsnscissorspk.com</div></div>
+          </a>
+          <div class="contact-item" data-testid="contact-hours">
+            <div class="contact-icon">🕐</div>
+            <div><div class="contact-k">Hours</div><div class="contact-v">Daily · 11:00 AM — 8:00 PM</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe title="Razors &amp; Scissors Location" data-testid="contact-map"
+          src="https://www.google.com/maps?q=Pakland+Business+Center+I-8+Markaz+Islamabad&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer data-testid="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-title">Razors <span class="gold">&amp;</span> Scissors</div>
+        <p class="footer-tagline">— I-8 Markaz, Islamabad —</p>
+        <p class="footer-desc">A premium men's grooming house in Islamabad. Classic barbering meets modern craft.</p>
+        <button class="btn-gold" style="font-size:.7rem;padding:12px 24px;" onclick="scrollTo('booking')" data-testid="footer-book">Book Appointment</button>
+      </div>
+      <div>
+        <div class="footer-h">Visit</div>
+        <ul class="footer-links">
+          <li><a href="#services" onclick="scrollTo('services');return false;">Services</a></li>
+          <li><a href="#barbers" onclick="scrollTo('barbers');return false;">Our Team</a></li>
+          <li><a href="#gallery" onclick="scrollTo('gallery');return false;">Gallery</a></li>
+          <li><a href="#reviews" onclick="scrollTo('reviews');return false;">Reviews</a></li>
+          <li><a href="#contact" onclick="scrollTo('contact');return false;">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h">Get In Touch</div>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item"><span class="fc-icon">📍</span>Pakland Business Center, I-8 Markaz, Islamabad</div>
+          <a href="tel:+92518774260" class="footer-contact-item" style="color:var(--text2);"><span class="fc-icon">📞</span>+92 51 8774260</a>
+        </div>
+        <div class="social-row">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" class="social-btn" data-testid="social-instagram">ig</a>
+          <a href="https://facebook.com" target="_blank" rel="noreferrer" class="social-btn" data-testid="social-facebook">fb</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© <span id="yr"></span> Razors &amp; Scissors. All rights reserved.</span>
+      <span style="letter-spacing:.25em;text-transform:uppercase;">Crafted in Islamabad</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== TOAST ====== -->
+<div id="toast"></div>
+
+<script>
+// ---- Utilities ----
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// Year
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Toast
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isError ? 'error' : '';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ---- Services Data ----
+const SERVICES = [
+  { id:'signature-haircut', icon:'✂️', name:'Signature Haircut', desc:'A precision haircut tailored to your face shape, finished with a hot-towel cleanse.', price:1800, dur:45 },
+  { id:'beard-sculpt', icon:'✨', name:'Beard Sculpt & Trim', desc:'Detailed beard line-up, shaping and conditioning with premium oils.', price:1200, dur:30 },
+  { id:'classic-shave', icon:'🔥', name:'Classic Straight Razor Shave', desc:'A traditional hot-towel straight razor shave for the closest, smoothest finish.', price:1500, dur:40 },
+  { id:'haircut-beard', icon:'👑', name:'Haircut & Beard Combo', desc:'The full reset — signature cut paired with a tailored beard sculpt.', price:2700, dur:70 },
+  { id:'wedding-grooming', icon:'💎', name:'Groom Package', desc:'The complete pre-wedding experience: cut, shave, facial, styling and hot towel.', price:8500, dur:150 },
+  { id:'hair-color', icon:'🎨', name:'Hair Colour & Camouflage', desc:'Premium grey blending or full colour using ammonia-free formulas.', price:3500, dur:75 },
+  { id:'luxury-facial', icon:'💧', name:"Gentleman's Facial", desc:'Deep cleanse, exfoliation, steam, mask and massage for refreshed skin.', price:2500, dur:50 },
+  { id:'head-massage', icon:'🌿', name:'Hot Oil Head Massage', desc:'Relaxing 25-minute scalp massage with warm almond and argan oils.', price:900, dur:25 },
+];
+
+const BARBERS = [
+  { id:'shani', name:'Shani', title:'Master Barber', bio:"With over a decade behind the chair, Shani is known for fades that are surgically clean and a calm, attentive chairside manner.", specialties:['Skin Fades','Scissor Work','Beard Sculpt'], img:'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=85&auto=format&fit=crop' },
+  { id:'mudassir', name:'Mudassir', title:'Senior Stylist', bio:"Mudassir is the artist clients turn to for wedding days and big occasions — meticulous, patient, and genuinely passionate.", specialties:['Wedding Grooming','Hair Styling','Colour'], img:'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=85&auto=format&fit=crop' },
+  { id:'haris', name:'Haris', title:'Barber', bio:"A modern stylist with a sharp eye for contemporary cuts, textures and trend-forward looks.", specialties:['Modern Cuts','Texture','Line-ups'], img:'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=900&q=85&auto=format&fit=crop' },
+];
+
+// Render Services
+(function() {
+  const grid = document.getElementById('services-grid');
+  grid.innerHTML = SERVICES.map(s => `
+    <div class="service-card reveal" data-testid="service-card-${s.id}">
+      <div class="svc-icon">${s.icon}</div>
+      <div class="svc-title">${s.name}</div>
+      <div class="svc-desc">${s.desc}</div>
+      <div class="svc-footer">
+        <div class="svc-dur">⏱ ${s.dur} min</div>
+        <div>
+          <div class="svc-price-label">From</div>
+          <div class="svc-price">PKR ${s.price.toLocaleString()}</div>
+        </div>
+      </div>
+      <button class="svc-book-link" onclick="preselectService('${s.id}')" data-testid="service-book-${s.id}">Book this service <span>↗</span></button>
+    </div>
+  `).join('');
+})();
+
+// Render Barbers
+(function() {
+  const grid = document.getElementById('barbers-grid');
+  grid.innerHTML = BARBERS.map((b, i) => `
+    <div class="barber-card reveal" data-testid="barber-card-${b.id}">
+      <img src="${b.img}" alt="${b.name}" loading="lazy" />
+      <div class="barber-overlay"></div>
+      <div class="barber-num">No. 0${i+1}</div>
+      <div class="barber-info">
+        <div class="barber-title">${b.title}</div>
+        <div class="barber-name">${b.name}</div>
+        <div class="barber-bio">${b.bio}</div>
+        <div class="barber-tags">${b.specialties.map(sp=>`<span class="barber-tag">${sp}</span>`).join('')}</div>
+        <button class="barber-book-btn" onclick="preselectBarber('${b.id}')" data-testid="barber-book-${b.id}">Book with ${b.name.split(' ')[0]} →</button>
+      </div>
+    </div>
+  `).join('');
+})();
+
+// Prefill + scroll to booking
+function preselectService(sid) {
+  const sel = document.getElementById('f-service');
+  if (sel) sel.value = sid;
+  scrollTo('booking');
+}
+function preselectBarber(bid) {
+  const sel = document.getElementById('f-barber');
+  if (sel) sel.value = bid;
+  scrollTo('booking');
+}
+
+// Set min date for date picker
+(function() {
+  const d = new Date().toISOString().split('T')[0];
+  document.getElementById('f-date').setAttribute('min', d);
+})();
+
+// ---- Booking form ----
+function submitBooking(e) {
+  e.preventDefault();
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const service = document.getElementById('f-service').value;
+  const barber = document.getElementById('f-barber').value;
+  const date = document.getElementById('f-date').value;
+  const time = document.getElementById('f-time').value;
+  const email = document.getElementById('f-email').value.trim();
+  const notes = document.getElementById('f-notes').value.trim();
+
+  if (!name || !phone || !service || !date || !time) {
+    showToast('Please fill in name, phone, service, date and time.', true);
+    return;
+  }
+
+  const svcName = SERVICES.find(s => s.id === service)?.name || service;
+  const barberName = BARBERS.find(b => b.id === barber)?.name || 'Any Available';
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  // Simulate API call (replace with actual fetch to backend if hosted)
+  setTimeout(() => {
+    const wrap = document.getElementById('form-wrap');
+    wrap.innerHTML = `
+      <div class="success-box" data-testid="booking-success">
+        <div class="success-icon">✅</div>
+        <h3 class="success-title">You're on the books.</h3>
+        <p class="success-text">
+          We've received your request for <strong style="color:var(--text);">${svcName}</strong>
+          with <strong style="color:var(--text);">${barberName}</strong>
+          on <strong style="color:var(--text);">${date}</strong>
+          at <strong style="color:var(--text);">${time}</strong>.
+          We'll confirm shortly.
+        </p>
+        <button class="btn-outline" onclick="resetForm()" data-testid="book-another-button">Book another →</button>
+      </div>
+    `;
+    showToast("Appointment requested — we'll confirm shortly.");
+  }, 900);
+}
+
+function resetForm() {
+  const wrap = document.getElementById('form-wrap');
+  wrap.innerHTML = `
+    <form id="booking-form" data-testid="booking-form" onsubmit="submitBooking(event)">
+      <div class="form-grid">
+        <div>
+          <label class="label-tiny" for="f-name">Full Name *</label>
+          <input id="f-name" type="text" class="input-line" placeholder="John Doe" required data-testid="form-name" />
+        </div>
+        <div>
+          <label class="label-tiny" for="f-phone">Phone *</label>
+          <input id="f-phone" type="tel" class="input-line" placeholder="+92 3XX XXXXXXX" required data-testid="form-phone" />
+        </div>
+        <div>
+          <label class="label-tiny" for="f-email">Email</label>
+          <input id="f-email" type="email" class="input-line" placeholder="you@email.com" data-testid="form-email" />
+        </div>
+        <div>
+          <label class="label-tiny" for="f-service">Service *</label>
+          <select id="f-service" class="input-line" required data-testid="form-service">
+            <option value="">Select a service</option>
+            <option value="signature-haircut">Signature Haircut — PKR 1,800</option>
+            <option value="beard-sculpt">Beard Sculpt &amp; Trim — PKR 1,200</option>
+            <option value="classic-shave">Classic Straight Razor Shave — PKR 1,500</option>
+            <option value="haircut-beard">Haircut &amp; Beard Combo — PKR 2,700</option>
+            <option value="wedding-grooming">Groom Package — PKR 8,500</option>
+            <option value="hair-color">Hair Colour &amp; Camouflage — PKR 3,500</option>
+            <option value="luxury-facial">Gentleman's Facial — PKR 2,500</option>
+            <option value="head-massage">Hot Oil Head Massage — PKR 900</option>
+          </select>
+        </div>
+        <div>
+          <label class="label-tiny" for="f-barber">Preferred Barber</label>
+          <select id="f-barber" class="input-line" data-testid="form-barber">
+            <option value="any">Any available</option>
+            <option value="shani">Shani — Master Barber</option>
+            <option value="mudassir">Mudassir — Senior Stylist</option>
+            <option value="haris">Haris — Barber</option>
+          </select>
+        </div>
+        <div>
+          <label class="label-tiny" for="f-date">Date *</label>
+          <input id="f-date" type="date" class="input-line" required data-testid="form-date" min="${new Date().toISOString().split('T')[0]}" />
+        </div>
+        <div>
+          <label class="label-tiny" for="f-time">Time *</label>
+          <select id="f-time" class="input-line" required data-testid="form-time">
+            <option value="">Select a time</option>
+            <option>11:00</option><option>11:30</option><option>12:00</option><option>12:30</option>
+            <option>13:00</option><option>13:30</option><option>14:00</option><option>14:30</option>
+            <option>15:00</option><option>15:30</option><option>16:00</option><option>16:30</option>
+            <option>17:00</option><option>17:30</option><option>18:00</option><option>18:30</option>
+            <option>19:00</option><option>19:30</option>
+          </select>
+        </div>
+        <div class="form-full">
+          <label class="label-tiny" for="f-notes">Notes</label>
+          <textarea id="f-notes" class="input-line" rows="2" placeholder="Anything we should know?" data-testid="form-notes"></textarea>
+        </div>
+      </div>
+      <div class="form-footer">
+        <span class="form-note">* Required · We'll confirm by call/SMS</span>
+        <button type="submit" class="btn-gold" id="submit-btn" data-testid="form-submit">Reserve Appointment →</button>
+      </div>
+    </form>
+  `;
+}
+
+// ---- Scroll reveal ----
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Re-observe after dynamic render
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.revealed)').forEach(el => observer.observe(el));
+}, 100);
+</script>
+</body>
+</html>
